@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO-DO-APP</title>
+    <link href="index.css" rel="stylesheet" />
+  </head>
+  <script>
+    function onpress() {
+      function parsedResponse(data) {
+        console.log(data);
+      }
+      function callback(resp) {
+        resp.json().then(parsedResponse);
+      }
+
+      fetch("http://localhost:3000/todos", {
+        method: "GET",
+      }).then(callback);
+    }
+  </script>
+  <body>
+    <main class="content">
+      <h3 class="title">To do Title</h3>
+      <input type="type" id="title" />
+      <h3 class="description">To do description</h3>
+      <input type="type" id="description" style="margin-bottom: 4%" />
+      <br />
+      <button onclick="onpress()">Send Todo</button>
+    </main>
+  </body>
+</html>
